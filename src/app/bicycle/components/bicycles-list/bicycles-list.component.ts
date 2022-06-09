@@ -43,7 +43,6 @@ export class BicyclesListComponent implements OnInit {
       this.bicycles = data.map((bicycle: any) =>
         BicycleFactory.toModel(bicycle)
       );
-      console.log(this.bicycles);
     });
   }
 

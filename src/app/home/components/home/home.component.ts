@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
 
   getBicycles() {
     this.localizationService.read().subscribe((data) => {
-      console.log(data);
       this.bicycles = data.map((bicycle: any) =>
         BicycleFactory.toModel(bicycle)
       );
