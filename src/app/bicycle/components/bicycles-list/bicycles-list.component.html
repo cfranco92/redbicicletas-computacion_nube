@@ -23,9 +23,9 @@
     </tr>
     <tr *ngFor="let bicycle of bicycles">
       <td class="text-center px-1">{{ bicycle.bicycleId }}</td>
-      <td class="text-center px-1">{{ bicycle.model }}</td>
+      <td class="text-center px-1">{{ bicycle.modelo }}</td>
       <td class="text-center px-1">
-        {{ bicycle.longitude }},{{ bicycle.latitude }}
+        {{ bicycle.longitud }},{{ bicycle.latitud }}
       </td>
       <td class="text-center px-1">
         <div *ngIf="!bicycle.user">Libre</div>
