@@ -1,15 +1,16 @@
 import { Bicycle } from "../models/bicycle.model";
 
 export class BicycleFactory {
-    static toModel(dto: any): any {
-        return {
-            id: dto._id,
-            bicycleId: dto.bicycleId,
-            color: dto.color,
-            model: dto.model,
-            latitude: dto.latitude,
-            longitude: dto.longitude,
-            user: dto.user
-        }
+  static toModel(dto: any): any {
+    if (dto.longitud === "undefined" || dto.latitud === "undefined") {
+      return;
     }
+    return {
+      id: dto.id,
+      bicycleId: dto.id,
+      modelo: dto.modelo,
+      latitud: dto.latitud ?? 0,
+      longitud: dto.longitud ?? 0,
+    };
+  }
 }

@@ -1,10 +1,12 @@
-import { Component, AfterViewInit, Input } from '@angular/core';
-import * as L from 'leaflet';
-import { MarkerService } from 'src/app/core/services/marker/marker.service';
+import * as L from "leaflet";
 
-const iconRetinaUrl = 'assets/marker-icon-2x.png';
-const iconUrl = 'assets/marker-icon.png';
-const shadowUrl = 'assets/marker-shadow.png';
+import { AfterViewInit, Component, Input } from "@angular/core";
+
+import { MarkerService } from "src/app/core/services/marker/marker.service";
+
+const iconRetinaUrl = "assets/marker-icon-2x.png";
+const iconUrl = "assets/marker-icon.png";
+const shadowUrl = "assets/marker-shadow.png";
 const iconDefault = L.icon({
   iconRetinaUrl,
   iconUrl,
@@ -13,40 +15,41 @@ const iconDefault = L.icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   tooltipAnchor: [16, -28],
-  shadowSize: [41, 41]
+  shadowSize: [41, 41],
 });
 L.Marker.prototype.options.icon = iconDefault;
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  selector: "app-map",
+  templateUrl: "./map.component.html",
+  styleUrls: ["./map.component.css"],
 })
 export class MapComponent implements AfterViewInit {
-
   @Input() myPoints: any[] = [];
 
   private map: any;
 
   private initMap(): void {
-    this.map = L.map('map', {
+    this.map = L.map("map", {
       center: [6.231875338799698, -75.61159853102133],
-      zoom: 11
+      zoom: 11,
     });
 
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 3,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+    const tiles = L.tileLayer(
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        maxZoom: 18,
+        minZoom: 3,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }
+    );
 
     tiles.addTo(this.map);
-    this.addMarkers()
+    this.addMarkers();
   }
 
-  constructor(
-    private markerService: MarkerService
-  ) { }
+  constructor(private markerService: MarkerService) {}
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -58,7 +61,8 @@ export class MapComponent implements AfterViewInit {
 
   addMarkers() {
     this.myPoints.map((point) => {
-      this.addMarker(point.latitude, point.longitude)
-    })
+      console.log(point.latitud);
+      this.addMarker(point.latitud, point.longitud);
+    });
   }
 }

@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import * as L from 'leaflet';
+import * as L from "leaflet";
+
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class MarkerService {
-
-  constructor() { }
+  constructor() {}
 
   makeMarkers(map: any, lat: number, lon: number): void {
     const marker = L.marker([lat, lon]);

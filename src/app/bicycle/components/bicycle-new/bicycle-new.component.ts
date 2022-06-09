@@ -1,64 +1,61 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Bicycle } from 'src/app/core/models/bicycle.model';
-import { BicycleService } from 'src/app/core/services/bicycle/bicycle.service';
+import { ActivatedRoute, Params } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+
+import { Bicycle } from "src/app/core/models/bicycle.model";
+import { BicycleService } from "src/app/core/services/bicycle/bicycle.service";
 
 @Component({
-  selector: 'app-bicycle-new',
-  templateUrl: './bicycle-new.component.html',
-  styleUrls: ['./bicycle-new.component.css']
+  selector: "app-bicycle-new",
+  templateUrl: "./bicycle-new.component.html",
+  styleUrls: ["./bicycle-new.component.css"],
 })
 export class BicycleNewComponent implements OnInit {
-
-  bicycle: Bicycle;
+  bicycle: any;
   colors: any[] = [
     {
-      text: 'Blanco'
+      text: "Blanco",
     },
     {
-      text: 'Negro'
+      text: "Negro",
     },
     {
-      text: 'Rojo'
+      text: "Rojo",
     },
     {
-      text: 'Verde'
+      text: "Verde",
     },
-  ]
+  ];
   models: any[] = [
     {
-      text: 'Ruta'
+      text: "Ruta",
     },
     {
-      text: 'Cross'
+      text: "Cross",
     },
     {
-      text: 'Mountain'
+      text: "Mountain",
     },
     {
-      text: 'Turismo'
+      text: "Turismo",
     },
-  ]
+  ];
 
-  constructor(
-    private route: ActivatedRoute,
-    private bicyclesService: BicycleService
-  ) {
+  constructor(private bicyclesService: BicycleService) {
     this.bicycle = {
-      bicycleId: '',
-      color: '',
-      model: '',
-      latitude: undefined,
-      longitude: undefined,
-    }
+      modelo: "",
+      latitud: undefined,
+      longitud: undefined,
+      id: undefined,
+    };
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   createBicycle() {
     this.bicyclesService.create(this.bicycle).subscribe((response) => {
-      alert(`Bicicleta ${response.body.bicycleId} con el id ${response.body._id} en la base de datos, creada con éxito`)
-    })
+      alert(
+        `Bicicleta ${response.body.bicycleId} con el id ${response.body._id} en la base de datos, creada con éxito`
+      );
+    });
   }
-
 }
