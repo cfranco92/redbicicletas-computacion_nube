@@ -61,7 +61,6 @@ export class MapComponent implements AfterViewInit {
 
   addMarkers() {
     this.myPoints.map((point) => {
-      console.log(point.latitud);
       this.addMarker(point.latitud, point.longitud);
     });
   }
